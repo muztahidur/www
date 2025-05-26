@@ -1,7 +1,7 @@
 const routineData = {
   "শনিবার": {
     morning: ["Bangla Tution", "English tution", "Break", "Higher Math"],
-    midday: ["Physics Tution", "Higher Math Tution", "Physics", "Bangla", "ICT"],
+    midday: ["Physics", "Bangla", "ICT", "Physics Tution", "Higher Math Tution"],
     night: ["English", "Chemistry", "Biology"]
   },
   "রবিবার": {
@@ -11,7 +11,7 @@ const routineData = {
   },
   "সোমবার": {
     morning: ["Bangla Tution", "English tution", "Physics", "Break"],
-    midday: ["Physics Tution", "Higher Math Tution", "Chemistry", "ICT"],
+    midday: ["Chemistry", "ICT", "Physics Tution", "Higher Math Tution"],
     night: ["English", "Biology"]
   },
   "মঙ্গলবার": {
@@ -21,7 +21,7 @@ const routineData = {
   },
   "বুধবার": {
     morning: ["Bangla Tution", "English Tution (যদি থাকে)", "Break", "Higher Math"],
-    midday: ["Physics Tution", "Higher Math Tution", "Chemistry", "Physics"],
+    midday: ["Chemistry", "Physics", "Physics Tution", "Higher Math Tution"],
     night: ["English", "ICT", "Biology"]
   },
   "বৃহস্পতিবার": {
@@ -276,8 +276,3 @@ function saveTimerToLocalStorage() {
   const timerData = { hours, minutes, seconds, microseconds };
   localStorage.setItem('timer', JSON.stringify(timerData));
 }
-// Toggling dark mode when the button is clicked
-const toggleButton = document.querySelector('.dark-mode-btn');
-toggleButton.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-});

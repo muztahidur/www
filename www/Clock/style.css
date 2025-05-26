@@ -1,104 +1,41 @@
 /* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f7f7;
     color: #333;
+    padding: 10px;
+    transition: all 0.3s ease;
 }
 
 header {
-    background-color: #4CAF50;
-    padding: 15px 0;
     text-align: center;
+    margin-bottom: 30px;
+    background-color: #0077cc;
+    padding: 15px;
+    border-radius: 8px;
     color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-header .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.navbar-logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.navbar-links {
-    list-style: none;
+header h1 {
     margin: 0;
-    padding: 0;
-    display: flex;
+    font-size: 28px;
 }
 
-.navbar-links li {
-    margin: 0 15px;
-}
-
-.navbar-links a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-#dark-mode-toggle {
-    background-color: #4CAF50;
-    color: white;
-    font-size: 20px;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-}
-
-#dark-mode-toggle:hover {
-    background-color: #45a049;
-}
-
-/* Main Content */
 main {
-    padding: 20px;
     text-align: center;
-}
-
-h1 {
-    font-size: 36px;
-    margin: 20px 0;
-}
-
-h2 {
-    font-size: 24px;
-    margin: 10px 0;
+    flex: 1;
 }
 
 .clock-display {
-    font-size: 48px;
+    font-size: 40px;
+    font-weight: bold;
     margin: 20px 0;
 }
 
-#stop-alarm-btn {
-    display: none;
-    padding: 10px 20px;
-    background-color: #f44336;
-    color: white;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-}
-
-#stop-alarm-btn:hover {
-    background-color: #e53935;
-}
-
-/* Alarms List */
 #alarms-list {
     margin-top: 30px;
-}
-
-#alarms-list h2 {
-    margin-bottom: 10px;
 }
 
 #alarm-list {
@@ -107,151 +44,333 @@ h2 {
 }
 
 #alarm-list li {
-    background-color: #e0e0e0;
-    padding: 10px;
-    margin: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 5px;
-}
-
-#alarm-list li .delete-icon {
-    display: none;
-    color: #f44336;
-    cursor: pointer;
     font-size: 18px;
+    margin: 10px 0;
+    padding: 5px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-#toggle-delete-btn {
-    background-color: #4CAF50;
-    color: white;
+/* Past Alarm */
+#alarm-list li.past {
+    background-color: #d3d3d3;
+    color: #a0a0a0;
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* Upcoming Alarm */
+#alarm-list li.upcoming {
+    background-color: #ffd700;
+    color: #ffffff;
+    font-weight: bold;
+    animation: highlight 1.5s infinite alternate;
+}
+
+@keyframes highlight {
+    0% {
+        background-color: #ffd700;
+        color: #ffffff;
+    }
+
+    100% {
+        background-color: #ff7f00;
+        color: #ffffff;
+    }
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    color: #333;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    border-top: 1px solid #ccc;
+}
+
+footer p {
     font-size: 16px;
+}
+
+/* Dark Mode */
+body.dark {
+    background-color: #2a2a3a;
+    color: #eaeaea;
+}
+
+body.dark header {
+    background-color: #121212;
+    color: #00ccff;
+}
+
+body.dark #current-time {
+    color: #ffffff;
+}
+
+body.dark button {
+    background-color: #444444;
+    color: #fff;
+}
+
+body.dark #alarms-list li {
+    background-color: #333333;
+    color: #fff;
+}
+
+/* Dark Mode toggle override */
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+header.dark-mode {
+    background-color: #222;
+}
+
+footer.dark-mode {
+    background-color: #222;
+}
+
+/* Date and Time */
+#date-time {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+/* Dark Mode Toggle Button */
+#dark-mode-toggle {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #FF5733;
+    color: white;
     border: none;
-    padding: 10px 15px;
     cursor: pointer;
-    margin-top: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: 0.3s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-#toggle-delete-btn:hover {
-    background-color: #45a049;
+#dark-mode-toggle:hover {
+    background-color: #C70039;
 }
 
-#toggle-delete-btn.active {
-    background-color: #e53935;
+#dark-mode-toggle.active {
+    background-color: #33C6FF;
 }
 
 /* Add Alarm Section */
 #add-alarm {
-    background-color: #f4f4f9;
+    margin-top: 30px;
+    background-color: #e8f0fe;
     padding: 20px;
     border-radius: 8px;
-    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-#new-alarm-time,
-#new-alarm-subject {
+#add-alarm input,
+#add-alarm button {
     padding: 10px;
+    margin: 5px;
     font-size: 16px;
-    margin: 10px 0;
-    width: 80%;
-    max-width: 300px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-#add-alarm-btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#add-alarm-btn:hover {
-    background-color: #45a049;
-}
-
-/* Footer */
-footer {
-    background-color: #4CAF50;
-    color: white;
     text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
 }
 
-/* Dark Mode Styles */
-body.dark-mode {
+/* Centering "বিষয়" placeholder */
+#new-alarm-subject::placeholder {
+    text-align: center;
+}
+
+/* Add Alarm Button */
+#add-alarm button {
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ✅ Dark Mode Styles for Add Alarm Section */
+body.dark #add-alarm {
+    background-color: #1e1e2f;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+}
+
+body.dark #add-alarm input,
+body.dark #add-alarm button {
     background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark #add-alarm button {
+    background-color: #005fa3;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    color: #333;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    border-top: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+
+footer p {
+    font-size: 16px;
+}
+
+/* ✅ ডার্ক মোডে footer স্টাইল */
+body.dark footer {
+    background-color: #121212;
+    color: #e0e0e0;
+    border-top: 1px solid #444;
+}
+
+/* Style for delete button */
+.delete-btn {
+    background-color: red;
     color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 14px;
 }
 
-body.dark-mode header {
-    background-color: #212121;
+.delete-btn:hover {
+    background-color: darkred;
 }
 
-body.dark-mode .navbar-links a {
+/* Button styles */
+.toggle-delete-btn {
+    background-color: #4CAF50;
+    /* Green background */
     color: white;
-}
-
-body.dark-mode #alarms-list {
-    background-color: #424242;
-}
-
-body.dark-mode #alarm-list li {
-    background-color: #616161;
-    color: white;
-}
-
-body.dark-mode #add-alarm {
-    background-color: #424242;
-    color: white;
-}
-
-body.dark-mode footer {
-    background-color: #212121;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .navbar-links {
-        flex-direction: column;
-    }
-
-    .navbar-links li {
-        margin-bottom: 10px;
-    }
-
-    #new-alarm-time,
-    #new-alarm-subject {
-        width: 90%;
-    }
-
-    #add-alarm-btn {
-        width: 90%;
-    }
-}
-
-.clock-display {
-    font-size: 36px;
+    /* White text */
+    border: none;
+    /* Remove default border */
+    padding: 12px 24px;
+    /* Padding around the text */
+    font-size: 16px;
+    /* Font size */
     font-weight: bold;
-    margin: 20px 0;
-    color: #4CAF50;
-    /* You can change this color if you'd like */
+    /* Make the text bold */
+    border-radius: 30px;
+    /* Rounded corners */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s;
+    /* Smooth transitions */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-body.dark-mode .clock-display {
+/* Hover effect */
+.toggle-delete-btn:hover {
+    background-color: #45a049;
+    /* Slightly darker green on hover */
+    transform: scale(1.05);
+    /* Slightly enlarge the button on hover */
+}
+
+/* Focus effect (when clicked) */
+.toggle-delete-btn:focus {
+    outline: none;
+    /* Remove the default focus outline */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Add shadow for focus effect */
+}
+
+/* Icon inside button */
+.toggle-delete-btn svg {
+    margin-right: 8px;
+    /* Space between icon and text */
+}
+
+#stop-alarm-btn {
+    background-color: #ff4d4d;
+    /* লাল ব্যাকগ্রাউন্ড */
+    color: white;
+    /* সাদা লেখা */
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+#stop-alarm-btn:hover {
+    background-color: #cc0000;
+    /* হোভার করলে গা dark লাল */
+}
+
+#stop-alarm-btn:active {
+    transform: scale(0.96);
+}
+
+.selector-group {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* মেইন লিঙ্কস */
+.links-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: .5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button-link {
+    background-color: #5593c0;
+    color: #1b2d5e;
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.3s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-link:hover {
+    background-color: #81c784;
+}
+
+/* ✅ Dark Mode এর জন্য .button-link স্টাইল */
+body.dark .button-link {
+    background-color: #444c5c;
+    /* ডার্ক ব্যাকগ্রাউন্ড */
     color: #ffffff;
-    /* Change color in dark mode */
+    /* সাদা লেখা */
 }
 
-@media (max-width: 768px) {
-    .clock-display {
-        font-size: 24px;
-    }
+body.dark .button-link:hover {
+    background-color: #607d8b;
+    /* হোভার রঙ */
 }

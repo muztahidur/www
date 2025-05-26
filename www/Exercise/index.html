@@ -11,24 +11,26 @@
 <body>
 
     <header>
-        <nav class="navbar">
-            <div class="navbar-logo">📘 Muztahid App</div>
-            <ul class="navbar-links">
-                <li><a href="/index.html">🏠 হোম</a></li>
-                <li><a href="/Study/study.html">📚 স্টাডি</a></li>
-                <li><a href="/Exercise/index.html">💪 এক্সারসাইজ</a></li>
-                <li><a href="/Clock/clock.html">🕰️ ঘড়ি</a></li>
-            </ul>
-            <div>
+        <div class="links-section">
+            <a href="/index.html" class="button-link">
+                🕋 নামাজের সময়
+            </a>
+            <a href="index.html" class="button-link">
+                💪 এক্সারসাইজ
+            </a>
+            <a href="/Study/study.html" class="button-link">
+                📚 স্টাডি
+            </a>
+            <a href="/Clock/clock.html" class="button-link">
+                🕰️ ঘড়ি
+            </a>
+            <button id="toggle-darkmode">🌙 Dark Mode</button>
+            <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
-                <!-- Dark Mode Toggle -->
-                <button id="dark-mode-toggle" class="dark-mode-btn">🌙</button>
-        </nav>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+            <h1>🏋️ আমার এক্সারসাইজ রুটিন</h1><br>
+            <div id="clock"></div>
+            <div id="date"></div>
 
-        <h1>🏋️ আমার এক্সারসাইজ রুটিন</h1>
-        <div id="clock"></div>
-        <div id="date"></div>
     </header>
 
     <main>
@@ -59,11 +61,31 @@
             <ul id="extraSubjectsList"></ul>
         </div>
 
+
     </main>
+
+
 
     <footer>
         <p>মেড উইথ ❤️ বাই Nihal</p>
     </footer>
+
+    <div class="links-section">
+        <a href="/index.html" class="button-link">
+            🕋 নামাজের সময়
+        </a>
+        <a href="index.html" class="button-link">
+            💪 এক্সারসাইজ
+        </a>
+        <a href="/Study/study.html" class="button-link">
+            📚 স্টাডি
+        </a>
+        <a href="/Clock/clock.html" class="button-link">
+            🕰️ ঘড়ি
+        </a>
+    </div>
+
+
 
     <script src="script.js"></script>
 

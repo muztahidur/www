@@ -8,6 +8,8 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- HTML ফাইলে <head> এর মধ্যে -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
   <!-- External CSS -->
   <link rel="stylesheet" href="style.css">
@@ -25,23 +27,23 @@
 <body>
 
   <header class="app-header">
-    <nav class="navbar">
-      <div class="navbar-logo">📘 Muztahid App</div>
-      <ul class="navbar-links">
-        <li><a href="index.html">🏠 হোম</a></li>
-        <li><a href="Study/study.html">📚 স্টাডি</a></li>
-        <li><a href="Exercise/index.html">💪 এক্সারসাইজ</a></li>
-        <li><a href="Clock/clock.html">🕰️ ঘড়ি</a></li>
-      </ul>
-      <div>
-        <!-- Dark Mode Toggle -->
-        <button id="dark-mode-toggle" class="dark-mode-btn">🌙</button>
-      </div>
-    </nav>
-
     <h1>👋 স্বাগতম, <span id="user-name">মুজতাহিদ</span>!</h1>
     <p class="tagline">আপনার দৈনন্দিন পরিকল্পনার অ্যাপ</p>
 
+    <header class="links-section">
+      <a href="index.html" class="button-link">
+        🕋 নামাজের সময়
+      </a>
+      <a href="Exercise/index.html" class="button-link">
+        💪 এক্সারসাইজ
+      </a>
+      <a href="Study/study.html" class="button-link">
+        📚 স্টাডি
+      </a>
+      <a href="Clock/clock.html" class="button-link">
+        🕰️ ঘড়ি
+      </a>
+    </header>
     <div class="dates">
       <p id="greeting">লোড হচ্ছে...</p>
       <div id="arabic-date" class="date-item">আরবি তারিখ: লোড হচ্ছে...</div>
@@ -84,7 +86,12 @@
     <button id="saveTimes" class="save-button">✅ সময় সংরক্ষণ করুন</button>
   </main>
 
-  <!-- <main class="links-section">
+  <main class="links-section">
+    <a href="index.html" class="button-link">
+
+      🕋 নামাজের সময়
+
+    </a>
     <a href="Exercise/index.html" class="button-link">
       💪 এক্সারসাইজ
     </a>
@@ -94,13 +101,14 @@
     <a href="Clock/clock.html" class="button-link">
       🕰️ ঘড়ি
     </a>
-  </main> -->
+  </main>
 
   <footer class="app-footer">
     <p>&copy; ২০২৫ মুজতাহিদ অ্যাপ. সর্বস্বত্ব সংরক্ষিত।</p>
   </footer>
 
-
+  <!-- Dark Mode Toggle -->
+  <button id="dark-mode-toggle" class="dark-mode-btn">🌙</button>
 
   <!-- Alarm Sound -->
   <audio id="alarm-sound" src="alarm-sound.mp3" preload="auto"></audio>

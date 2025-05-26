@@ -195,11 +195,13 @@ document.getElementById('stop-alarm-btn').addEventListener('click', () => {
     document.getElementById('stop-alarm-btn').style.display = 'none';
 });
 
-// Dark Mode Toggle
-const toggleButton = document.getElementById('dark-mode-toggle');
-toggleButton.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
+// ✅ Dark Mode Toggle
+document.getElementById('dark-mode-toggle').addEventListener('click', function () {
+    document.body.classList.toggle('dark');
+    this.classList.toggle('active');
+    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
 });
+
 // ✅ Page Load Initialization
 window.addEventListener('DOMContentLoaded', () => {
     // Load theme

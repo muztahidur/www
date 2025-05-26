@@ -86,7 +86,7 @@ function showRoutine() {
 }
 
 // Dark Mode Toggle
-const toggleButton = document.getElementById('dark-mode-toggle');
+const toggleButton = document.getElementById('toggle-darkmode');
 toggleButton.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
 });
@@ -126,6 +126,22 @@ function loadExtraSubjects() {
     });
 }
 
+function addExtraSubject() {
+    const input = document.getElementById('extra-subject');
+    const subject = input.value.trim();
+    if (subject) {
+        let subjects = JSON.parse(localStorage.getItem('extraSubjects')) || [];
+        if (!subjects.includes(subject)) {  // ডুপ্লিকেট চেক
+            subjects.push(subject);
+            localStorage.setItem('extraSubjects', JSON.stringify(subjects));
+            input.value = '';
+            loadExtraSubjects();
+        } else {
+            alert("এই বিষয়টি ইতিমধ্যেই যুক্ত আছে!");
+        }
+    }
+}
+
 // Remove Extra Subject
 function removeExtraSubject(index) {
     const subjects = JSON.parse(localStorage.getItem('extraSubjects')) || [];
@@ -140,13 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
     loadExtraSubjects();
 });
 
-window.onload = function() {
+window.onload = function () {
     // আজকের দিন বের করো
     const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
-    
+
     // সিলেক্ট এলিমেন্ট খুঁজে বের করো
     const daySelect = document.getElementById('day');
-    
+
     // আজকের দিন সিলেক্ট করো
     daySelect.value = today;
 

@@ -22,6 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
   loadSunTimes();
   loadUserName();
   checkFajrAlarm();
+
 });
 
 // ইউজারের নাম লোড করা
@@ -57,13 +58,11 @@ function loadSavedPrayerTimes() {
 // তারিখ, শুভেচ্ছা ও সময় আপডেট
 function updateDateTime() {
   const now = new Date();
+  // ✅ Arabic date আপডেট
+  document.getElementById('arabic-date').textContent = `আরবি তারিখ: ${getHijriDate()}`;
 
   // ইংরেজি তারিখ
   document.getElementById('date-time').textContent = now.toLocaleString('bn-BD');
-
-  // আরবি তারিখ হিসাব করা
-  const hijriDate = gregorianToHijri(now);
-  document.getElementById('arabic-date').textContent = `আরবি তারিখ: ${hijriDate.day} ${hijriDate.month} ${hijriDate.year}`;
 
   // শুভেচ্ছা বার্তা
   const hour = now.getHours();
@@ -91,43 +90,57 @@ function loadSunTimes() {
   document.getElementById('sunset-time').textContent = sunset;
 }
 
-// ফজরের সময় এলার্ম বাজানো
 function checkFajrAlarm() {
   const alarmSound = document.getElementById('alarm-sound');
   const fajrTime = localStorage.getItem('fajr');
 
-  if (!fajrTime) return; // যদি ফজর সময় সেট না করা থাকে
+  if (!fajrTime) return;
+
+  const fajr24 = formatTimeTo24Hour(fajrTime); // ২৪ ঘণ্টা ফরম্যাটে রূপান্তর
+  let fajrAlarmPlayed = false; // একবার বাজানোর জন্য চেক
 
   setInterval(() => {
     const now = new Date();
-    const currentTime = now.toTimeString().slice(0,5); // "HH:MM"
+    const currentTime = now.toTimeString().slice(0, 5); // "HH:MM"
 
-    if (currentTime === fajrTime) {
+    if (!fajrAlarmPlayed && currentTime === fajr24) {
       alarmSound.play();
       alert('🕋 ফজরের সময় হয়েছে! নামাজ আদায় করুন।');
+      fajrAlarmPlayed = true; // পরবর্তীবার যেন না বাজে
     }
-  }, 30000); // ৩০ সেকেন্ড পরপর চেক করা হবে
+  }, 30000); // প্রতি ৩০ সেকেন্ডে চেক
 }
 
-// Gregorian to Hijri Date Conversion Function
-function gregorianToHijri(date) {
-  const gregorianYear = date.getFullYear();
-  const gregorianMonth = date.getMonth() + 1; // months are 0-based
-  const gregorianDay = date.getDate();
 
-  // হিজরি বছরের হিসাব
-  const hijriYear = Math.floor((gregorianYear - 622) * 1.030681);
-  const hijriMonth = Math.floor((gregorianMonth - 1) * 1.032856);
-  const hijriDay = Math.floor(gregorianDay - 1);
-  
-  const hijriMonths = [
-    "মুহাররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি",
-    "রজব", "শাবান", "রমজান", "শাওয়াল", "জিলকদ", "জিলহজ্জ"
-  ];
 
-  return {
-    year: hijriYear,
-    month: hijriMonths[hijriMonth],
-    day: hijriDay
-  };
+// // Gregorian to Hijri Date Conversion Function
+// function gregorianToHijri(date) {
+//   const gregorianYear = date.getFullYear();
+//   const gregorianMonth = date.getMonth() + 1; // months are 0-based
+//   const gregorianDay = date.getDate();
+
+//   // হিজরি বছরের হিসাব
+//   const hijriYear = Math.floor((gregorianYear - 622) * 1.030681);
+//   const hijriMonth = Math.floor((gregorianMonth - 1) * 1.032856);
+//   const hijriDay = Math.floor(gregorianDay - 1);
+
+//   const hijriMonths = [
+//     "মুহাররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি",
+//     "রজব", "শাবান", "রমজান", "শাওয়াল", "জিলকদ", "জিলহজ্জ"
+//   ];
+
+//   return {
+//     year: hijriYear,
+//     month: hijriMonths[hijriMonth],
+//     day: hijriDay
+//   };
+// }
+function getHijriDate() {
+  const formatter = new Intl.DateTimeFormat('bn-BD-u-ca-islamic', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+
+  return formatter.format(new Date());
 }

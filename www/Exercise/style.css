@@ -7,27 +7,36 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #E0F7FA 0%, #ffffff 100%);
+    background: linear-gradient(to right, #e0f7fa, #ffffff);
     color: #333;
-    padding: 20px 30px;
+    padding: 10px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     transition: background 0.5s, color 0.5s;
+    text-align: center;
 }
 
 /* Header */
 header {
-    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    /* উপাদানগুলো নিচের লাইনে যাবে */
+    align-items: center;
+    /* সেন্টার এ আনবে */
+    gap: 5px;
+    /* উপাদানগুলোর মধ্যে ফাঁক */
     padding: 20px;
-    background: linear-gradient(135deg, #00bcd4, #00838f);
-    color: #fff;
-    border-radius: 12px;
+    background-color: #00bcd4;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+
 header h1 {
+    /* margin-bottom: 05px; */
     font-size: 2rem;
 }
 
@@ -38,6 +47,7 @@ main {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding: 0 20px;
 }
 
 /* Day Selector */
@@ -90,11 +100,11 @@ select:hover {
 #routine-list li {
     background: #e0f7fa;
     margin: 10px 0;
-    padding: 14px 20px;
+    padding: 14px;
     border-radius: 8px;
     font-size: 1rem;
     text-align: left;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s;
 }
 
@@ -104,19 +114,27 @@ select:hover {
     color: #004d40;
 }
 
-/* Clock and Date */
+/* clock এর জন্য */
 #clock {
-    margin-top: 10px;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #e0f7fa;
-    text-shadow: 1px 1px 2px #004d40;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0, 77, 64, 0.3);
+    user-select: none;
+    margin: 0;
 }
 
+/* date এর জন্য */
 #date {
-    font-size: 1rem;
-    color: #e0f2f1;
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    user-select: none;
+    margin: 0;
 }
+
 
 /* Fade-in Animation */
 @keyframes fadeIn {
@@ -213,7 +231,7 @@ body.dark-mode #date {
     border-radius: 8px;
     font-size: 1rem;
     text-align: left;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s;
     position: relative;
 }
@@ -230,34 +248,52 @@ body.dark-mode #date {
     top: 10px;
     right: 10px;
     background-color: #D32F2F;
+    /* A professional, muted red color */
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 8px;
+    padding: 2px 8px;
+    border-radius: 4px;
     cursor: pointer;
     transition: background 0.3s;
 }
 
 .remove-btn:hover {
     background-color: #B71C1C;
+    /* A slightly darker red on hover */
 }
+
+/* .remove-btn {
+    position: absolute;
+    margin-left: 10px;
+    background-color: #e74c3c;
+    border: none;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: #c0392b;
+} */
+
+
 
 /* Footer */
 footer {
     margin-bottom: 30px;
     margin-top: 30px;
-    padding: 15px;
-    background: linear-gradient(135deg, #00bcd4, #00838f);
+    padding: 10px;
+    background: #00bcd4;
     color: #fff;
     border-radius: 12px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Dark Mode */
 .dark-mode {
-    background: #121212;
-    color: #E0E0E0;
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    color: #f2f2f2;
 }
 
 .dark-mode h1 {
@@ -286,121 +322,51 @@ footer {
     background-color: #cc0000;
 }
 
-/* Sunset Theme */
-.sunset-mode {
-    background: linear-gradient(135deg, #FF7043, #FF5722);
-    color: #fff;
-}
-
-.sunset-mode h1 {
-    color: #ffcc80;
-}
-
-.sunset-mode #routine-list li {
-    background-color: #FFAB91;
-    color: #4E342E;
-}
-
-.sunset-mode #routine-list li:hover {
-    background-color: #FF7043;
-    color: #ffffff;
-}
-
-.sunset-mode .extra-section button {
-    background-color: #FF7043;
-}
-
-.sunset-mode .extra-section button:hover {
-    background-color: #FF5722;
-}
-
-.sunset-mode .remove-btn {
-    background-color: #FF3D00;
-}
-
-.sunset-mode .remove-btn:hover {
-    background-color: #D32F2F;
-}
-
-/* Navbar Styling */
-.navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #003366;
-    border-radius: 15px;
-    color: #fff;
-    padding: 5px 10px;
-    font-family: 'Roboto', sans-serif;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    flex-grow: 1;
-    width: 100%;
-}
-
-.navbar-logo {
-    font-size: .60rem;
-    font-weight: 500;
-}
-
-.navbar-links {
-    list-style: none;
-    display: flex;
-    gap: 5px;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar-links li a {
-    color: #fff;
-    text-decoration: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-}
-
-.navbar-links li a:hover {
-    background-color: #005599;
-}
-
-body.sunset-mode .navbar {
-    background-color: #FF7043;
-}
-
-/* Clock Styling */
-.clock-container {
-    display: flex;
-    align-items: center;
-}
-
-/* Dark Mode Button Styling */
-.dark-mode-btn {
-    margin-left: 10px;
-    background: #ffffff22;
+#toggle-darkmode {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #4CAF50;
     color: white;
-    border: 1px solid #ffffff55;
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 1.1rem;
+    padding: 6px 6px;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    font-size: 10px;
+    z-index: 999;
+    transition: 0.3s;
 }
 
-.dark-mode-btn:hover {
-    background: #ffffff33;
-    transform: scale(1.05);
+
+#toggle-darkmode:hover {
+    background-color: #45a049;
 }
 
-body.sunset-mode .dark-mode-btn {
-    background: #FF7043;
-    color: #eee;
-    border: 1px solid #FF5722;
+/* মেইন লিঙ্কস */
+.links-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: .5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button-link {
+    background-color: #32c5d7;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.4rem .5rem;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.3s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-link:hover {
+    background-color: #af1d1d;
+}
+
+.dark-mode .button-link {
+    background-color: #ffeead;
+    color: #1a1a1a;
 }
